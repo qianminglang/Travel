@@ -3,9 +3,14 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+// 解决样式重置的问题
+import './assets/styles/reset.css'
+// 解决1像素边框的问题
+import './assets/styles/border.css'
+import fastClick from 'fastclick'
 
 Vue.config.productionTip = false
-
+fastClick.attach(document.body)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
