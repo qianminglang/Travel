@@ -1,13 +1,17 @@
 <template>
   <div>
-    <div>Home</div>
-    <router-link to="/list">列表页</router-link>
+    <home-header></home-header>
   </div>
 </template>
 
 <script>
+import homeHeader from './components/header'
+
 export default {
-  name: 'home'
+  name: 'home',
+  components: {
+    homeHeader
+  }
 }
 </script>
 
