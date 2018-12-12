@@ -3,13 +3,13 @@
     <div class="title">
       热销推荐
     </div>
-    <div class="item border-bottom" v-for="(item) of list" :key="item.id">
-      <img class="item-img" :src="item.imgUrl" alt="">
-      <div class="item-info">
-        <div class="item-title">{{item.title}}</div>
-        <div class="item-comment">{{item.desc}}</div>
-      </div>
-    </div>
+      <router-link tag="div" to="/detail" class="item border-bottom" v-for="(item) of list" :key="item.id">
+        <img class="item-img" :src="item.imgUrl" alt="">
+        <div class="item-info">
+          <div class="item-title">{{item.title}}</div>
+          <div class="item-comment">{{item.desc}}</div>
+        </div>
+      </router-link>
   </div>
 </template>
 
@@ -29,6 +29,7 @@ export default {
     text-indent .2rem
     line-height .8rem
     margin-top .2rem
+
   .item
     overflow hidden
     display flex
