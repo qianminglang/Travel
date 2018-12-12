@@ -7,7 +7,9 @@
            v-show="keyWord"
       >
         <ul>
-          <li class="item border-topbottom" v-for="(item) of list" :key="item.id">{{item.name}}</li>
+          <li class="item border-topbottom" v-for="(item) of list" :key="item.id"
+            @click="handleCityClick(item.name)"
+          >{{item.name}}</li>
           <li class="item border-topbottom" v-show="hasNoData">未查询到结果</li>
         </ul>
       </div>
@@ -32,6 +34,18 @@ export default {
   computed: {
     hasNoData () {
       return !this.list.length
+    }
+  },
+  methods: {
+    handleCityClick (city) {
+      /* 派发一个名字叫changeCity的action，并传递参数city
+       * 但是这个changeCity的action必须在创建store的时候有对应名字的action
+        * 且这个action的第一个参数是上下文，第二个参数表示dispatch传递过去的参数
+        * */
+      this.$store.dispatch('changeCity', city)
+      // 直接调用mutations方法,将index中的actions注释掉也是可以的
+      // this.$store.commit('changeCity', city)
+      this.$router.push('/')
     }
   },
   mounted () {

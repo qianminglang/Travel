@@ -5,7 +5,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wraper">
-            <div class="button">北京</div>
+            <div class="button">{{this.$store.state.city}}</div>
           </div>
         </div>
       </div>
@@ -13,14 +13,17 @@
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
           <div class="button-wraper" v-for="(item ,index) of hotCities" :key="index">
-            <div class="button">{{item.name}}</div>
+            <!--当点击热门城市的时候触发handleCityClick方法，并传入城市名称-->
+            <div class="button" @click="handleCityClick(item.name)">{{item.name}}</div>
           </div>
         </div>
       </div>
       <div class="area" v-for="(item ,key) of cities" :key="key" :ref="key">
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
-          <div class="item border-bottom" v-for="(innerItem ) of item" :key="innerItem.id">{{innerItem.name}}</div>
+          <div class="item border-bottom" v-for="(innerItem ) of item" :key="innerItem.id"
+               @click="handleCityClick(innerItem.name)"
+          >{{innerItem.name}}</div>
         </div>
       </div>
     </div>
@@ -38,6 +41,18 @@ export default {
     cities: Object,
     hotCities: Array,
     letter: String
+  },
+  methods: {
+    handleCityClick (city) {
+      /* 派发一个名字叫changeCity的action，并传递参数city
+       * 但是这个changeCity的action必须在创建store的时候有对应名字的action
+        * 且这个action的第一个参数是上下文，第二个参数表示dispatch传递过去的参数
+        * */
+      this.$store.dispatch('changeCity', city)
+      // 直接调用mutations方法,将index中的actions注释掉也是可以的
+      // this.$store.commit('changeCity', city)
+      this.$router.push('/')
+    }
   },
   watch: {
     letter () {
