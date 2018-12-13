@@ -44,7 +44,7 @@ export default {
     window.addEventListener('scroll', this.handleScroll)
   },
   deactivated () {
-    window.removeEventListener('scroll', _getIterator2gthis.handleScroll)
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
