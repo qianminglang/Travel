@@ -1,5 +1,6 @@
 <template>
-    <div class="banner">
+  <div>
+    <div class="banner" @click="bannerClick">
       <img class="banner-img" src="//img1.qunarzz.com/sight/p0/1710/9a/9a1d6bad7eb0ac0aa3.img.jpg_600x330_1d4cb895.jpg" alt="">
       <div class="banner-info">
         <div class="banner-title">
@@ -11,11 +12,36 @@
         </div>
       </div>
     </div>
+    <common-gallery :imgs="imgs" v-show="showGallery"
+      @close="closeGallary"
+    >
+    </common-gallery>
+  </div>
 </template>
 
 <script>
+import commonGallery from 'common/gallery/gallery'
 export default {
-  name: 'banner'
+  name: 'banner',
+  components: {
+    commonGallery
+  },
+  data () {
+    return {
+      imgs: [
+        'http://img1.qunarzz.com/sight/p0/1808/fb/fb02599f5f7ea8f9a3.img.jpg_r_800x800_320c2d80.jpg' , 'http://img1.qunarzz.com/sight/p0/1808/49/490c4569f80cefc5a3.img.jpg_r_800x800_f980bfb7.jpg'
+      ],
+      showGallery: false
+    }
+  },
+  methods: {
+    bannerClick () {
+      this.showGallery = true
+    },
+    closeGallary () {
+      this.showGallery = false
+    }
+  }
 }
 </script>
 
