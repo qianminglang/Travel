@@ -4,7 +4,7 @@
       <div class="iconfont back-icon">&#xe624;</div>
     </router-link>
     <div class="header-fixed" v-show="!showAbs" :style="opacityStyle">
-      城市选择
+      景点详情
       <router-link to="/">
         <div class="iconfont header-back-icon">&#xe624;</div>
       </router-link>
@@ -28,9 +28,9 @@ export default {
   },
   methods: {
     handleScroll () {
-      console.log(document.documentElement.scrollTop);
-      const top = document.documentElement.scrollTop;
-      if ( top > 40) {
+      console.log(document.documentElement.scrollTop)
+      const top = document.documentElement.scrollTop
+      if (top > 40) {
         let opacity = top / 140
         opacity = opacity > 1 ? 1 : opacity
         this.opacityStyle = {opacity}
@@ -42,6 +42,9 @@ export default {
   },
   activated () {
     window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () {
+    window.removeEventListener('scroll', _getIterator2gthis.handleScroll)
   }
 }
 </script>
