@@ -2,7 +2,7 @@
   <div class="alpahbet">
     <ul class="item-list">
       <li class="item-alphabet" @click="alphabet"
-          @touchstart="handleTouchStart"
+          @touchstart.prevent="handleTouchStart"
           @touchmove="handleTouchmove"
           @touchend="handleTouchend"
           v-for="(item) of letters" :key="item"
