@@ -9,9 +9,6 @@
         <div class="iconfont header-back-icon">&#xe624;</div>
       </router-link>
     </div>
-    <div class="content">
-
-    </div>
   </div>
 </template>
 
@@ -79,6 +76,4 @@ export default {
       top 0
       left 0
       color #fff
-  .content
-    height 50rem
 </style>
