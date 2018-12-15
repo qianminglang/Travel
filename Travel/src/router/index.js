@@ -19,9 +19,12 @@ export default new Router({
       component: city
     },
     {
-      path: '/detail',
+      path: '/detail/:id',
       name: 'Detail',
       component: detail
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })

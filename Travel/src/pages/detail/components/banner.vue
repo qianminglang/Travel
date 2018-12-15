@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="banner" @click="bannerClick">
-      <img class="banner-img" src="//img1.qunarzz.com/sight/p0/1710/9a/9a1d6bad7eb0ac0aa3.img.jpg_600x330_1d4cb895.jpg" alt="">
+      <img class="banner-img" :src="bannerImg" alt="">
       <div class="banner-info">
         <div class="banner-title">
-          轿子雪山
+          {{sightName}}
         </div>
         <div class="banner-number">
           <span class="iconfont arrow-icon">&#xe674;</span>
-          21
+          {{gallaryImgs.length}}
         </div>
       </div>
     </div>
-    <common-gallery :imgs="imgs" v-show="showGallery"
+    <common-gallery :imgs="gallaryImgs" v-show="showGallery"
       @close="closeGallary"
     >
     </common-gallery>
@@ -26,11 +26,13 @@ export default {
   components: {
     commonGallery
   },
+  props: {
+    bannerImg: String,
+    gallaryImgs: Array,
+    sightName: String
+  },
   data () {
     return {
-      imgs: [
-        'http://img1.qunarzz.com/sight/p0/1808/fb/fb02599f5f7ea8f9a3.img.jpg_r_800x800_320c2d80.jpg' , 'http://img1.qunarzz.com/sight/p0/1808/49/490c4569f80cefc5a3.img.jpg_r_800x800_f980bfb7.jpg'
-      ],
       showGallery: false
     }
   },

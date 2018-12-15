@@ -3,7 +3,7 @@
     <div class="title">
       热销推荐
     </div>
-      <router-link tag="div" to="/detail" class="item border-bottom" v-for="(item) of list" :key="item.id">
+      <router-link tag="div" :to="'/detail/' + item.id" class="item border-bottom" v-for="(item) of list" :key="item.id">
         <img class="item-img" :src="item.imgUrl" alt="">
         <div class="item-info">
           <div class="item-title">{{item.title}}</div>
